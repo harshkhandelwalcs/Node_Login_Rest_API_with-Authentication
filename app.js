@@ -19,7 +19,11 @@ app.use(morgan('dev'));
 
 // Use the passport package in our application
 app.use(passport.initialize());
-
+app.use(function(req, res, next) { 
+res.header("Access-Control-Allow-Origin", "*"); 
+res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+next(); 
+});
 //routes
 app.use('/', home);
 app.use('/signup', signup);
